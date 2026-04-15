@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Period Pain Reference Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f5;
+    --surface: #ffffff;
+    --surface-alt: #f3f0eb;
+    --border: rgba(0,0,0,0.1);
+    --border-strong: rgba(0,0,0,0.18);
+    --text: #1a1714;
+    --text-muted: #6b6560;
+    --text-faint: #a09890;
+    --green-bg: #eaf3de; --green-brd: #97c459; --green-txt: #27500a; --green-tag: #c0dd97; --green-tag-txt: #3b6d11;
+    --amber-bg: #faeeda; --amber-brd: #ef9f27; --amber-txt: #633806; --amber-tag: #fac775; --amber-tag-txt: #854f0b;
+    --coral-bg: #faece7; --coral-brd: #f0997b; --coral-txt: #712b13; --coral-tag: #f5c4b3; --coral-tag-txt: #993c1d;
+    --red-bg: #fcebeb; --red-brd: #f09595; --red-txt: #791f1f; --red-tag: #f7c1c1; --red-tag-txt: #a32d2d;
+    --accent: #c9553a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #131110; --surface: #1e1b19; --surface-alt: #252220;
+      --border: rgba(255,255,255,0.08); --border-strong: rgba(255,255,255,0.15);
+      --text: #f0ece6; --text-muted: #9c9289; --text-faint: #5c5650;
+      --green-bg: #173404; --green-brd: #3b6d11; --green-txt: #c0dd97; --green-tag: #27500a; --green-tag-txt: #c0dd97;
+      --amber-bg: #412402; --amber-brd: #854f0b; --amber-txt: #fac775; --amber-tag: #633806; --amber-tag-txt: #fac775;
+      --coral-bg: #4a1b0c; --coral-brd: #993c1d; --coral-txt: #f5c4b3; --coral-tag: #712b13; --coral-tag-txt: #f5c4b3;
+      --red-bg: #501313; --red-brd: #a32d2d; --red-txt: #f7c1c1; --red-tag: #791f1f; --red-tag-txt: #f7c1c1;
+      --accent: #e8704f;
+    }
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  header {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+
+  header .eyebrow {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(28px, 5vw, 46px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--text);
+    max-width: 600px;
+    margin: 0 auto 16px;
+  }
+
+  header h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  header p {
+    font-size: 15px;
+    color: var(--text-muted);
+    max-width: 480px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+
+  main {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faint);
+    margin-bottom: 16px;
+  }
+
+  /* --- SLIDERS --- */
+  .sliders {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px 28px 24px;
+    margin-bottom: 20px;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .slider-row:last-child { margin-bottom: 0; }
+
+  .slider-label {
+    font-size: 13px;
+    color: var(--text-muted);
+    min-width: 110px;
+  }
+
+  input[type=range] {
+    flex: 1;
+    -webkit-appearance: none;
+    appearance: none;
+    height: 4px;
+    background: var(--border-strong);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--surface);
+    box-shadow: 0 0 0 1.5px var(--accent);
+    transition: transform 0.1s;
+  }
+  input[type=range]:active::-webkit-slider-thumb { transform: scale(1.15); }
+  input[type=range]::-moz-range-thumb {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--surface);
+    cursor: pointer;
+  }
+
+  .slider-val {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text);
+    min-width: 16px;
+    text-align: center;
+  }
+
+  .slider-unit {
+    font-size: 12px;
+    color: var(--text-faint);
+    min-width: 56px;
+  }
+
+  /* --- RESULT CARD --- */
+  #result-card {
+    border-radius: 14px;
+    border: 1px solid;
+    padding: 22px 24px;
+    margin-bottom: 32px;
+    transition: background 0.25s, border-color 0.25s;
+  }
+
+  #result-card .zone-label {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  #result-card .zone-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+
+  #result-card .zone-body {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 14px;
+  }
+
+  #result-card .zone-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+  }
+
+  /* --- MATRIX --- */
+  .matrix-wrap {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 32px;
+    overflow-x: auto;
+  }
+
+  table.matrix {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 400px;
+    font-size: 12px;
+  }
+
+  .matrix th {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--text-faint);
+    padding: 8px 10px;
+    text-align: center;
+    border: 1px solid var(--border);
+    line-height: 1.4;
+  }
+  .matrix th.row-header { text-align: left; font-size: 10px; }
+
+  .matrix td {
+    padding: 10px 8px;
+    text-align: center;
+    border: 1px solid var(--border);
+    font-size: 11px;
+    font-weight: 500;
+    cursor: default;
+    transition: opacity 0.2s;
+    border-radius: 0;
+  }
+
+  .matrix td.active-cell {
+    outline: 2px solid var(--accent);
+    outline-offset: -2px;
+    opacity: 1 !important;
+  }
+
+  .c0 { background: var(--green-bg); color: var(--green-txt); }
+  .c1 { background: var(--green-bg); color: var(--green-txt); }
+  .c2 { background: var(--amber-bg); color: var(--amber-txt); }
+  .c3 { background: var(--coral-bg); color: var(--coral-txt); }
+  .c4 { background: var(--red-bg); color: var(--red-txt); }
+  .c5 { background: var(--red-bg); color: var(--red-txt); }
+
+  /* --- SYMPTOM FLAGS --- */
+  .flags-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+
+  .flag-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+
+  .flag-card .flag-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .flag-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    margin-top: 4px;
+  }
+
+  .flag-card p {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    padding-left: 15px;
+  }
+
+  /* --- FOOTER --- */
+  footer {
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.75;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  footer strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  @media (max-width: 520px) {
+    header { padding: 36px 20px 32px; }
+    main { padding: 28px 16px 60px; }
+    .sliders { padding: 20px 16px; }
+    .slider-label { min-width: 90px; font-size: 12px; }
+    .matrix-wrap { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Endometriosis awareness</p>
+  <h1>Is your period pain <em>actually</em> normal?</h1>
+  <p>Pain intensity alone doesn't tell the full story. This tool maps how bad your pain is against how often it happens — and gives concrete guidance on when to talk to a doctor.</p>
+</header>
+
+<main>
+
+  <div class="sliders">
+    <p class="section-label">Your experience</p>
+    <div class="slider-row">
+      <span class="slider-label">Pain level</span>
+      <input type="range" min="1" max="10" step="1" value="5" id="intensity">
+      <span class="slider-val" id="int-out">5</span>
+      <span class="slider-unit">out of 10</span>
+    </div>
+    <div class="slider-row">
+      <span class="slider-label">Cycles affected</span>
+      <input type="range" min="1" max="4" step="1" value="2" id="frequency">
+      <span class="slider-val" id="freq-out">2</span>
+      <span class="slider-unit">of last 4</span>
+    </div>
+  </div>
+
+  <div id="result-card"></div>
+
+  <p class="section-label">All combinations</p>
+  <div class="matrix-wrap">
+    <table class="matrix" aria-label="Period pain risk matrix by intensity and frequency">
+      <thead>
+        <tr>
+          <th class="row-header">Freq ↓ &nbsp; Intensity →</th>
+          <th>1–3<br><span style="font-weight:300;font-size:10px">mild</span></th>
+          <th>4–5<br><span style="font-weight:300;font-size:10px">moderate</span></th>
+          <th>6–7<br><span style="font-weight:300;font-size:10px">severe</span></th>
+          <th>8–10<br><span style="font-weight:300;font-size:10px">debilitating</span></th>
+        </tr>
+      </thead>
+      <tbody id="matrix-body"></tbody>
+    </table>
+  </div>
+
+  <p class="section-label">Other symptoms worth flagging</p>
+  <div class="flags-grid">
+    <div class="flag-card">
+      <div class="flag-title"><span class="flag-dot"></span>Pain before your period starts</div>
+      <p>Cramping that begins more than 1–2 days before flow can signal endometriosis or adenomyosis — even at moderate intensity.</p>
+    </div>
+    <div class="flag-card">
+      <div class="flag-title"><span class="flag-dot"></span>Pain during sex, urination, or bowel movements</div>
+      <p>Pelvic pain in any of these contexts — especially around your cycle — is one of the most commonly dismissed endometriosis symptoms.</p>
+    </div>
+    <div class="flag-card">
+      <div class="flag-title"><span class="flag-dot"></span>OTC medication doesn't work</div>
+      <p>Standard doses of ibuprofen or naproxen should control typical period pain. Needing more, or finding them ineffective, is a clinical signal.</p>
+    </div>
+    <div class="flag-card">
+      <div class="flag-title"><span class="flag-dot"></span>Heavy bleeding alongside pain</div>
+      <p>Soaking a pad or tampon every 1–2 hours, combined with significant pain, can indicate fibroids, adenomyosis, or related conditions.</p>
+    </div>
+    <div class="flag-card">
+      <div class="flag-title"><span class="flag-dot"></span>Missing work, school, or activities</div>
+      <p>Losing 1 or more days per month to period pain — regardless of your pain score — is clinically significant and warrants evaluation.</p>
+    </div>
+    <div class="flag-card">
+      <div class="flag-title"><span class="flag-dot"></span>Pain that's getting worse over time</div>
+      <p>Dysmenorrhea that progressively worsens across cycles, rather than staying stable, is a pattern associated with endometriosis.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <p>
+    <strong>Why this tool exists:</strong> Research shows that after symptoms begin, patients wait <strong>1–4 years</strong> before seeking medical attention — and the two biggest reasons are not knowing the symptoms are abnormal, and having been told the pain is just part of having a period. This tool is designed to directly address both. <strong>This is a reference, not a diagnosis.</strong> Pain tolerance varies — if something feels wrong for your body, that's enough reason to bring it up with a provider.
+  </p>
+</footer>
+
+<script>
+const zones = [
+  [
+    {level:0,title:"Monitor",body:"Mild, infrequent pain is within the typical range. Track your cycle over a few months and note any changes in intensity or duration.",action:"Monitor — track over time"},
+    {level:1,title:"Monitor",body:"Mild pain most cycles, but still manageable. Worth tracking. If it increases in intensity or starts affecting daily life, mention it at your next checkup.",action:"Monitor — mention if it worsens"},
+    {level:2,title:"Mention at your next checkup",body:"Mild but showing up every cycle. Even at lower intensity, persistent symptoms can be an early signal worth logging and discussing with your provider.",action:"Mention at checkup"},
+    {level:2,title:"Mention at your next checkup",body:"Mild pain on every cycle without exception. The consistency here matters — bring it up at your next appointment, even if it doesn't feel 'bad enough.'",action:"Mention at checkup"}
+  ],
+  [
+    {level:1,title:"Monitor",body:"Moderate pain occasionally. Track whether it's getting worse cycle to cycle. One or two difficult cycles doesn't require urgent action — but note it.",action:"Monitor — track the pattern"},
+    {level:2,title:"Mention at your next checkup",body:"Moderate pain more often than not. This frequency at this intensity warrants a conversation with your provider — don't wait for it to get worse first.",action:"Mention at checkup"},
+    {level:3,title:"Talk to a doctor",body:"Moderate-to-severe pain most cycles. This pattern — persistent, significant, recurring — is one of the most common presentations in delayed endometriosis diagnosis.",action:"Talk to a doctor"},
+    {level:3,title:"Talk to a doctor",body:"Moderate-to-severe pain every cycle. If you've normalized this, please don't — this isn't a baseline. Ask to be evaluated. You deserve answers.",action:"Talk to a doctor"}
+  ],
+  [
+    {level:2,title:"Mention at your next checkup",body:"Severe pain occasionally. Even one or two very bad cycles a year is worth raising — especially if it's forcing you to miss work, school, or daily activities.",action:"Mention at checkup"},
+    {level:3,title:"Talk to a doctor",body:"Severe pain more often than not. This level of disruption, this regularly, warrants evaluation — not 'wait and see.' Ask specifically about endometriosis.",action:"Talk to a doctor"},
+    {level:4,title:"Seek an evaluation",body:"Severe pain most cycles, consistently. This pattern is clinically significant. The average endometriosis diagnosis takes 7–10 years, often because pain like this is dismissed.",action:"Seek evaluation"},
+    {level:5,title:"Seek an evaluation",body:"Severe pain every single cycle. This is not normal, and it is not something you should manage alone. Please seek a formal evaluation from a provider who takes pelvic pain seriously.",action:"Seek evaluation"}
+  ],
+  [
+    {level:2,title:"Mention at your next checkup",body:"Debilitating pain occasionally. Even infrequent pain at this level deserves medical attention — being unable to function, even rarely, is not something to dismiss.",action:"Mention at checkup"},
+    {level:4,title:"Seek an evaluation",body:"Debilitating pain happening more often than not. This is a significant pattern that warrants a thorough evaluation, including consideration of endometriosis.",action:"Seek evaluation"},
+    {level:5,title:"Seek an evaluation",body:"Debilitating pain most cycles. This level and frequency together are a strong clinical indicator. You deserve answers — not reassurance that it's normal.",action:"Seek evaluation"},
+    {level:5,title:"Seek an evaluation",body:"Debilitating pain every cycle. This is a medical concern requiring thorough investigation. Please advocate for yourself — this level of pain should not be accepted as inevitable.",action:"Seek evaluation"}
+  ]
+];
+
+const palettes = [
+  {bg:'var(--green-bg)',brd:'var(--green-brd)',txt:'var(--green-txt)',tag:'var(--green-tag)',tagTxt:'var(--green-tag-txt)'},
+  {bg:'var(--green-bg)',brd:'var(--green-brd)',txt:'var(--green-txt)',tag:'var(--green-tag)',tagTxt:'var(--green-tag-txt)'},
+  {bg:'var(--amber-bg)',brd:'var(--amber-brd)',txt:'var(--amber-txt)',tag:'var(--amber-tag)',tagTxt:'var(--amber-tag-txt)'},
+  {bg:'var(--coral-bg)',brd:'var(--coral-brd)',txt:'var(--coral-txt)',tag:'var(--coral-tag)',tagTxt:'var(--coral-tag-txt)'},
+  {bg:'var(--red-bg)',brd:'var(--red-brd)',txt:'var(--red-txt)',tag:'var(--red-tag)',tagTxt:'var(--red-tag-txt)'},
+  {bg:'var(--red-bg)',brd:'var(--red-brd)',txt:'var(--red-txt)',tag:'var(--red-tag)',tagTxt:'var(--red-tag-txt)'}
+];
+
+const cellLabels = ['monitor','monitor','mention','talk to a doctor','evaluate','evaluate'];
+const cellClasses = ['c0','c1','c2','c3','c4','c5'];
+const freqLabels = ['1 of 4 cycles','2 of 4 cycles','3 of 4 cycles','every cycle'];
+const intBuckets = [[1,3],[4,5],[6,7],[8,10]];
+
+function getIntBucket(v){ for(let i=0;i<intBuckets.length;i++){ if(v>=intBuckets[i][0]&&v<=intBuckets[i][1]) return i; } return 3; }
+function getFreqBucket(v){ return v-1; }
+
+function buildMatrix(){
+  const tbody = document.getElementById('matrix-body');
+  tbody.innerHTML = '';
+  for(let f=0;f<4;f++){
+    const tr = document.createElement('tr');
+    const th = document.createElement('th');
+    th.className = 'row-header';
+    th.style.fontWeight = '400';
+    th.style.color = 'var(--text-muted)';
+    th.style.textAlign = 'left';
+    th.textContent = freqLabels[f];
+    tr.appendChild(th);
+    for(let i=0;i<4;i++){
+      const td = document.createElement('td');
+      const z = zones[f][i];
+      td.className = cellClasses[z.level];
+      td.textContent = cellLabels[z.level];
+      td.dataset.f = f; td.dataset.i = i;
+      tr.appendChild(td);
+    }
+    tbody.appendChild(tr);
+  }
+}
+
+function update(){
+  const intVal = parseInt(document.getElementById('intensity').value);
+  const freqVal = parseInt(document.getElementById('frequency').value);
+  document.getElementById('int-out').textContent = intVal;
+  document.getElementById('freq-out').textContent = freqVal;
+
+  const iB = getIntBucket(intVal);
+  const fB = getFreqBucket(freqVal);
+  const z = zones[fB][iB];
+  const p = palettes[z.level];
+
+  const card = document.getElementById('result-card');
+  card.style.background = p.bg;
+  card.style.borderColor = p.brd;
+  card.innerHTML = `
+    <p class="zone-label" style="color:${p.tagTxt}">Your zone</p>
+    <p class="zone-title" style="color:${p.txt}">${z.title}</p>
+    <p class="zone-body" style="color:${p.txt}">${z.body}</p>
+    <span class="zone-tag" style="background:${p.tag};color:${p.tagTxt}">${z.action}</span>
+  `;
+
+  document.querySelectorAll('#matrix-body td').forEach(td => {
+    const match = parseInt(td.dataset.f)===fB && parseInt(td.dataset.i)===iB;
+    td.classList.toggle('active-cell', match);
+    td.style.opacity = match ? '1' : '0.45';
+  });
+}
+
+buildMatrix();
+document.getElementById('intensity').addEventListener('input', update);
+document.getElementById('frequency').addEventListener('input', update);
+update();
+</script>
+</body>
+</html>
